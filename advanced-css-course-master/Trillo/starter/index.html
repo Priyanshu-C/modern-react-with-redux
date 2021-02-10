@@ -1,16 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="shortcut icon" type="image/png" href="img/favicon.png">
-        
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link
+            href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
+
         <title>trillo &mdash; Your all-in-one booking app</title>
     </head>
     <body>
-        
+        <div class="nav-bar">
+            <div class="nav-bar__left">
+                <img
+                    class="nav-bar__left__logo"
+                    src="./img/avatar.svg"
+                    alt="avatar"
+                />
+            </div>
+            <div class="nav-bar__logo">
+                <h1 class="nav-bar__logo__logo">BUCKITO</h1>
+            </div>
+            <div class="nav-bar__right">
+                <img
+                    class="nav-bar__right__bucket-logo"
+                    src="./img/shopping-bag.svg"
+                    alt="avatar"
+                />
+            </div>
+        </div>
+        <div class="search-box">
+            <input type="text" placeholder=" " /><span></span>
+        </div>
+        <script>
+            var searchBox = document.querySelectorAll(
+                '.search-box input[type="text"] + span'
+            );
+
+            searchBox.forEach((elm) => {
+                elm.addEventListener("click", () => {
+                    elm.previousElementSibling.value = "";
+                });
+            });
+        </script>
     </body>
 </html>

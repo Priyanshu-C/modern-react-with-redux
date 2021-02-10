@@ -15,3 +15,171 @@ Grey dark 2: #777
 Grey dark 3: #999
 
 */
+
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,400i,700");
+
+$background-color: #2a2e37;
+$search-bg-color: #242628;
+$nav-logo-width: 3rem;
+$transition: all 0.5s ease;
+:root {
+    --color-primary: #eb2f64;
+    --color-primary-light: #ff3366;
+    --color-primary-dark: #ba265d;
+
+    --color-grey-light-1: #faf9f9;
+    --color-grey-light-2: #f4f2f2;
+    --color-grey-light-3: #f0eeee;
+    --color-grey-light-4: #ccc;
+
+    --color-grey-dark-1: #333;
+    --color-grey-dark-2: #777;
+    --color-grey-dark-3: #999;
+    --custom-color: rgb(136, 25, 180);
+
+    --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+    --shadow-light: 0 2rem 5rem rgba(0, 0, 0, 0.06);
+
+    --line: 1px solid var(--color-grey-light-2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; // 1rem = 10px, 10px/16px = 62.5%
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--color-grey-dark-2);
+    background-image: linear-gradient(
+        to right bottom,
+        var(--color-primary-light),
+        var(--color-primary-dark)
+    );
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.nav-bar {
+    width: 100vw;
+    position: absolute;
+    height: 5rem;
+    background-color: white;
+    top: 0;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-light);
+    display: flex;
+    overflow: hidden;
+
+    &__left {
+        &__logo {
+            margin: 0 1rem;
+            width: $nav-logo-width;
+            transform: scale(1);
+            transition: all 0.2s ease;
+        }
+        &__logo:hover {
+            transform: scale(1.2);
+        }
+    }
+    &__logo {
+        &__logo {
+            font-size: 4rem;
+        }
+    }
+    &__right {
+        &__search-logo {
+            margin: 0 2rem;
+            width: $nav-logo-width;
+        }
+        &__bucket-logo {
+            margin: 0 2rem;
+            width: $nav-logo-width;
+        }
+    }
+}
+
+.search-box {
+    border: solid 5px black;
+    display: inline-block;
+    position: relative;
+    border-radius: 50px;
+    input[type="text"] {
+        font-family: Raleway, sans-serif;
+        font-size: 20px;
+        font-weight: bold;
+        width: 50px;
+        height: 50px;
+        padding: 5px 40px 5px 10px;
+        border: none;
+        box-sizing: border-box;
+        border-radius: 50px;
+        transition: width 800ms cubic-bezier(0.5, -0.5, 0.5, 0.5) 600ms;
+        &:focus {
+            outline: none;
+        }
+        &:focus,
+        &:not(:placeholder-shown) {
+            width: 300px;
+            transition: width 800ms cubic-bezier(0.5, -0.5, 0.5, 1.5);
+            + span {
+                bottom: 13px;
+                right: 10px;
+                transition: bottom 300ms ease-out 800ms,
+                    right 300ms ease-out 800ms;
+            }
+            + span:after {
+                top: 0;
+                right: 10px;
+                opacity: 1;
+                transition: top 300ms ease-out 1100ms,
+                    right 300ms ease-out 1100ms, opacity 300ms ease 1100ms;
+            }
+        }
+    }
+    span {
+        width: 25px;
+        height: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        bottom: -13px;
+        right: -15px;
+        transition: bottom 300ms ease-out 300ms, right 300ms ease-out 300ms;
+        &:before,
+        &:after {
+            content: "";
+            height: 25px;
+            border-left: solid 5px black;
+            position: absolute;
+            transform: rotate(-45deg);
+        }
+        &:after {
+            transform: rotate(45deg);
+            opacity: 0;
+            top: -20px;
+            right: -10px;
+            transition: top 300ms ease-out, right 300ms ease-out,
+                opacity 300ms ease-out;
+        }
+    }
+}
